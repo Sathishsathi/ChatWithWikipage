@@ -10,7 +10,7 @@ They can select the wikipage and started asking question. The chatbot will answe
 * We have used flask to serve the api
 * Used js, css and html to build the chat window which will be suitable for integrating into wikipedia page in future
 
-##Setup
+## Setup
 * Install ollama for serving the llm in local or else use huggingface pipeline for the inference
 * Install `requrements.txt`
 * Run main.py
