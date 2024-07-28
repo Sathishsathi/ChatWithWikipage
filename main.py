@@ -2,14 +2,13 @@ from flask import Flask, jsonify, request
 import mysql.connector
 from mysql.connector import Error
 from wiki_plaintext import wiki_page_answer
-from dotenv import load_dotenv
 from flask_cors import CORS
 import os
-load_dotenv()
+
 
 app = Flask(__name__)
 CORS(app) 
-port=int(os.getenv('PORT',3000))
+port=3000
 # Database connection
 
 def get_db_connection():
