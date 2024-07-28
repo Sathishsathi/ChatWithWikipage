@@ -15,11 +15,11 @@ function getCookieValue(name) {
 }
 
 // Use these variables in your server-side logic (e.g., Express routes)
-function fetchBotResponse(userMessage) {
+function fetchBotResponse(userMessage,query) {
   let userName = getCookieValue('session_id');
-  let query = "whare in the place"
+  // let query = "whare in the place"
  // var apiUrl = `http://127.0.0.1:3000/${userMessage}/${query}`;
- const apiUrl=`http://127.0.0.1:3000/${userMessage}/${query}`
+ const apiUrl=`http://127.0.0.1:3000/${query}/${userMessage}`
   console.log(userName,48);
     return fetch(apiUrl, {
     method: 'POST',
@@ -40,16 +40,16 @@ function fetchBotResponse(userMessage) {
     return response.json();
   });
 }
-async function sendMessage(value) {// function for a get user input &&  send a message from a user 
-   let message=value.trim()
+async function sendMessage() {// function for a get user input &&  send a message from a user 
+  //  let message=value.trim()
   var userInput = document.getElementById("userInput");
   let  userMessage = userInput.value.trim();
-  if (userMessage===""&&message!=='') {
-    userMessage=message
-  } else if(message==='') {
-    userMessage=userMessage
+  // if (userMessage===""&&message!=='') {
+  //   userMessage=message
+  // } else if(message==='') {
+  //   userMessage=userMessage
     
-  }
+  // }
   //  console.log(userMessage,64,message);
 
   if (userMessage === "") {
@@ -66,9 +66,10 @@ async function sendMessage(value) {// function for a get user input &&  send a m
 
   // Clear user input
   userInput.value = "";
+  const searchInput = document.getElementById('searchInput');
 
   // Fetch API to send user message and get bot response
-  await fetchBotResponse(userMessage)
+  await fetchBotResponse(userMessage,searchInput.value.trim())
     .then(response => {
       // Display bot message
          // Display bot message
@@ -116,10 +117,10 @@ async function fetchSuggestions() {
   }
   
   try {
-    let  cookie= document.cookie
-    console.log(cookie,8);
+    // let  cookie= document.cookie
+    // console.log(cookie,8);
  const apiUrl=`https://en.wikipedia.org/w/api.php?action=opensearch&search=${query}&namespace=0&format=json&origin=*`
- document.cookie="dummy"
+//  document.cookie="dummy"
  
   
   const response = await fetch(apiUrl);
