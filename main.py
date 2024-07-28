@@ -28,7 +28,7 @@ def home(page_name, query):
     if not session_id:
         set_cookie = True
         session_id = create_session(page_name)
-    response = get_response(query, session[session_id], session_id)
+    response = "dummy resp"
     if set_cookie:
         resp = jsonify({"success": response, "cookie": session_id})
     else:
