@@ -17,15 +17,22 @@ function showLoader() {
   document.getElementById("loader").style.display = "flex"; // Show loader
 }
 
-// Function to hide the loader
-function hideLoader() {
-  document.getElementById("loader").style.display = "none"; // Hide loader
+
+
+   // Function to show the typing indicator
+   function showTypingIndicator() {
+    document.getElementById("typingIndicator").style.display = "flex"; // Show indicator
+}
+
+// Function to hide the typing indicator
+function hideTypingIndicator() {
+    document.getElementById("typingIndicator").style.display = "none"; // Hide indicator
 }
 // Use these variables in your server-side logic (e.g., Express routes)
 function fetchBotResponse(userMessage,query) {
   let userName = getCookieValue('session_id');
   // let query = "whare in the place"
-  showLoader()
+  showTypingIndicator()
  // var apiUrl = `http://127.0.0.1:3000/${userMessage}/${query}`;
  const apiUrl=`http://127.0.0.1:3000/${query}/${userMessage}`
   console.log(userName,48);
@@ -45,7 +52,7 @@ function fetchBotResponse(userMessage,query) {
    
     // document.cookie={userMessage:userMessage}
     // document.cookie="dummy"
-    hideLoader()
+    hideTypingIndicator()
     return response.json();
   });
   
