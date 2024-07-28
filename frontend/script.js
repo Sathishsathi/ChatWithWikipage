@@ -13,21 +13,29 @@ function getCookieValue(name) {
     }
     return null;
 }
+function showLoader() {
+  document.getElementById("loader").style.display = "flex"; // Show loader
+}
 
+// Function to hide the loader
+function hideLoader() {
+  document.getElementById("loader").style.display = "none"; // Hide loader
+}
 // Use these variables in your server-side logic (e.g., Express routes)
 function fetchBotResponse(userMessage,query) {
   let userName = getCookieValue('session_id');
   // let query = "whare in the place"
+  showLoader()
  // var apiUrl = `http://127.0.0.1:3000/${userMessage}/${query}`;
  const apiUrl=`http://127.0.0.1:3000/${query}/${userMessage}`
   console.log(userName,48);
     return fetch(apiUrl, {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       // "getSetCookie":cookie
     },
-    body: JSON.stringify({ question: userMessage }),credentials:'include'
+    // body: JSON.stringify({ question: userMessage }),credentials:'include'
   })
   .then(response => {
     if (!response.ok) {
@@ -36,9 +44,11 @@ function fetchBotResponse(userMessage,query) {
     // console.log(response.json(),57);
    
     // document.cookie={userMessage:userMessage}
-    document.cookie="dummy"
+    // document.cookie="dummy"
+    hideLoader()
     return response.json();
   });
+  
 }
 async function sendMessage() {// function for a get user input &&  send a message from a user 
   //  let message=value.trim()
@@ -79,7 +89,7 @@ async function sendMessage() {// function for a get user input &&  send a messag
    
       var botMessage = response.message;
       var botDiv = document.createElement("div");
-      botDiv.textContent = botMessage;
+      botDiv.innerHTML= botMessage;
       botDiv.classList.add("chat-message", "bot-message");
       chatBox.appendChild(botDiv);
 
