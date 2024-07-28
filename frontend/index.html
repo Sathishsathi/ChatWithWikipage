@@ -9,9 +9,12 @@
 
 </head>
 <body>
-  <div class="loader" id="loader">
+  <!-- <div class="loader" id="loader">
     <div class="spinner"></div>
-</div>
+</div> -->
+
+
+
   <div class="chat-container" id="chatContainer">
     <div class="search-container">
       <input type="text" id="searchInput" class="search-input" placeholder="Search...">
@@ -22,6 +25,12 @@
     </div>
     <div class="chat-box" id="chatBox">
       <div class="chat-message bot-message">Hi there! How can I help you?</div>
+    </div>
+    <div class="typing-indicator" id="typingIndicator">
+      <span>Typing</span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
     <input type="text" id="userInput" placeholder="Type your message...">
     <button onclick="sendMessage()">Send</button>
